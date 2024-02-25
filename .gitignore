@@ -1,0 +1,7 @@
+.DS_Store
+data/abstraction-and-reasoning-challenge
+.ipynb_checkpoints
+*.npz
+archive/summarizer.ipynb
+archive/base-exp1-diff.html
+archive/base-exp51-diff.html
