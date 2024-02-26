@@ -2,11 +2,11 @@
 
 Note: This is a personal project for my own curiosity and learning, and is not an officially supported Google product.
 
-This is an on-going experiment to find a suitable deep learning architecture to solve visual reasoning tasks from the 2020 Kaggle [Abstraction Reasoning Challenge](https://www.kaggle.com/c/abstraction-and-reasoning-challenge) benchmark. This competition was hosted by [François Chollet](https://fchollet.com/), creator of the Keras neural networks library. [Chollet’s paper on measuring intelligence](https://arxiv.org/abs/1911.01547) provides the context and motivation behind the ARC benchmark.
+This is an on-going experiment to find a suitable deep learning architecture to solve visual reasoning tasks from the 2020 Kaggle [Abstraction Reasoning Challenge (ARC)](https://www.kaggle.com/c/abstraction-and-reasoning-challenge) benchmark. This competition was hosted by [François Chollet](https://fchollet.com/), creator of the Keras neural networks library. [Chollet’s paper on measuring intelligence](https://arxiv.org/abs/1911.01547) provides the context and motivation behind the ARC benchmark.
 
 ## Background
 
-A "Reasoning Task" is as follows:
+ARC is about understanding a set of transformation rules from just a few examples. A "Reasoning Task" is as follows:
 
 - Three to five “Training” or demonstrational pairs are given, showing how to create "Output” from “Input”.
 - At least one “Test” grids with just the Input grid is given.
@@ -36,7 +36,7 @@ The approach of the [top scorers](https://www.kaggle.com/competitions/abstractio
 
 ## Applying a Transformer: My Experiment
 
-The attention mechanism and its capacity of capturing semantics makes Transformer a suitable candidate. The idea is to treat the task much like a seq2seq2 language translation task, where the encoder absorbs and captures the rules / steps to be applied from the Inputs, and the decoder applies the rules step by step to the Output.
+The attention mechanism and its capacity of capturing semantics makes Transformer a suitable candidate. The idea is to treat the task much like a seq2seq language translation task, where the encoder absorbs and captures the rules / steps to be applied from the Inputs, and the decoder applies the rules step by step to the Output.
 
 A sketch of how the Transformer architecture is currently applied in this experiment. Each input is one training example as a sequence of grids. Each output is a sequence of grids followed by a stop token. The last output from the decoder before the stop token is the predicted task output:
 
