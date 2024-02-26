@@ -2,7 +2,7 @@
 
 1. Quickly get a model up and running with train/test loops, to see what the results look like, gain experience.
 1. Reuse existing models before developing from a custom architecture.
-1. Synthetic data is expected to be required. The given [ARC benchmark tasks](https://github.com/fchollet/ARC)are not only complex, cover a very large variety of visual understanding and editing operations, the 800 tasks provided are insufficient to train a model to fully learn the operational semantics of most tasks. 
+1. Synthetic data is expected to be required. The given [ARC benchmark tasks](https://github.com/fchollet/ARC) are not only complex, cover a very large variety of visual understanding and editing operations, the 800 tasks provided are insufficient to train a model to fully learn the operational semantics of most tasks. 
 1. Once the initial learning operating a transformer on this data is completed, aim to get some successes in modeling, with a much reduced complexity to simplify the challenge:
 	- Small Simple Tasks; Single Step Tasks
 	- MonoChrome; Small Grid (or even 1D)
@@ -17,17 +17,13 @@
 An [open sourced transformer implementation](https://github.com/rojagtap/transformer-abstractive-summarization/blob/master/summarizer.ipynb) was modified (see the [nbdiffs](../archive/base-exp5-diff.pdf)) in the following ways:
 
 <div align="center">
-   <table style="border:none;border-collapse:separate">
-   <td style="width:50%;border:none;"><img src="../img/arc_transformer.png"  width="400px"  style="vertical-align:middle;"/></td>
-   <td style="border:none;vertical-align:middle;">
-   <ul>
-<li>Replaced the Keras text embedding module to a custom 2D to n-dim embedding vector module. The embedding weights are shared across the sequence, input and output.</li>
-<li>Replaced the softmax vocab probabilities output to a Dense-Reshape layer such that it outputs a 2D grid of floating point numbers.</li>
-<li>Some of the reasoning tasks are multi-steps, so we can adapt a seq-2-seq paradigm. To adapt the problem as a sequence generation with a Transformer model, a 2D STOP token was created simply using a QR code.</li>
-   </ul>
-   </td>
-   </table>
+   <img src="../img/arc_transformer.png"  width="400px"  style="vertical-align:middle;"/>	
 </div>
+
+- Replaced the Keras text embedding module to a custom 2D to n-dim embedding vector module. The embedding weights are shared across the sequence, input and output.
+- Replaced the softmax vocab probabilities output to a Dense-Reshape layer such that it outputs a 2D grid of floating point numbers.
+- Some of the reasoning tasks are multi-steps, so we can adapt a seq-2-seq paradigm. To adapt the problem as a sequence generation with a Transformer model, a 2D STOP token was created simply using a QR code.
+ 
 
 ## Feature Engineering
 
