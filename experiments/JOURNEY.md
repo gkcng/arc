@@ -40,8 +40,8 @@ To determine how to map the original 0-9 color index into a format more condusiv
 The input grid features were re-engineered using the rotated-GSB representation, with 0 being the mask. The representation maximizes the vector distance separation between points representing the task colors. 
 
 <div align="center">
-   <img src="../img/gsb.png"  width="400px"  style="vertical-align:middle;"/>   	
-   <img src="../img/rotated_gsb.png"  width="400px"  style="vertical-align:middle;"/>   
+   <img src="../img/gsb.png"  height="350px"  style="vertical-align:middle;"/>   	
+   <img src="../img/rotated_gsb.png"  height="350px"  style="vertical-align:middle;"/>   
 </div>
 
 The input embeddings takes the 3D coordinate vector for each pixel and outputs a 1D vector of d_model length (a hyperparameter).
@@ -61,8 +61,6 @@ Experiment 1: Partially tagged and analyzed the distribution of the training dat
 Experiment 2: Explore a few hyperparameters varying #epochs and lr and observing loss. Used Identity tasks.
 
 Experiment 3: Test Dynamic Learning Rate. Used Identity tasks.
-
-Experiment 3: Implemented Dynamic Learning Rate
 
 Experiment 4: Tested with true ARC Tasks. 
 - Analyzed vanishing gradient problem.
