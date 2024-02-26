@@ -37,7 +37,7 @@ To determine how to map the original 0-9 color index into a format more condusiv
 - [3D Gyroelongated Square Bipyramid (GSB)](https://en.wikipedia.org/wiki/Gyroelongated_square_bipyramid) (also called - tetrakis-square-antiprism) (3 dim / pixel), and 
 - The GSB rotated 45 degrees in all 3 axes to avoid points having any 0 valued coordinate.
 
-The input grid features were re-engineered using the rotated-GSB representation, with 0 being the mask. The representation maximizes the vector distance separation between points representing the task colors. 
+The input grid features were re-engineered using the rotated-GSB representation, using a vertex's 3D coordinates to represents a color, and 0,0,0 being the mask. The representation maximizes the vector distance separation between points representing the task colors. 
 
 <div align="center">
    <img src="../img/gsb.png"  height="350px"  style="vertical-align:middle;"/>   	
