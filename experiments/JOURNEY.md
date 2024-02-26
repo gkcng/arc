@@ -27,15 +27,15 @@ An [open sourced transformer implementation](https://github.com/rojagtap/transfo
 
 ## Feature Engineering
 
-There is no fixed grid size in the original benchmark tasks, often even the outputs are of a different size to the inputs. All grids are standardized into a 32x32 grid, with the original task occupying towards the top left of the grid with non-zero values, and out of bounds grid cells uses the value 0 as a mask.
+There is no fixed grid size in the original benchmark tasks, often even the outputs are of a different size to the inputs. To adapt them to a neural architecutre, all data grids are standardized into a 32x32 grid, with the original task occupying towards the top left of the grid with non-zero values, and irrelevant grid cells takes the value 0 as a mask.
 
-There are 10 different task colors, plus one for the standardized grid mask. Since color is meaningless to a deep learning model, they are just discrete categories for the task, we can map the colors in whichever way that is condusive for machine learning. We will simply write bi-directional conversion code to translate to and from the representation.
+There are 10 different task colors, plus one for the grid mask we just introduced. Since the discrete colors are meaningless to a deep learning model, we can map the colors in whichever way that is condusive for machine learning. We will simply write bi-directional conversion code to translate to and from the representation.
 
-To determine how to map the original 0-9 color index into a format more condusive for model training, four alternative representations were tested against the same model, with the same hyperparameters and same # epochs, to see which representation yields overall total pixel accuracy (not grids since we are not testing learning) at the end of the test:
+To determine how to map the original 0-9 color index into a format more condusive for model training, four alternative representations were tested against the same model, with the same hyperparameters and same # epochs, to see which representation yields the most total pixel accuracy (not grids since we are not yet testing learning) at the end of the test, as a proxy for the representation's fitness to be learned:
 - Sparse One-Hot (10 dim / pixel), 
 - 0-1 RGB (3 dim / pixel), 
 - [3D Gyroelongated Square Bipyramid (GSB)](https://en.wikipedia.org/wiki/Gyroelongated_square_bipyramid) (also called - tetrakis-square-antiprism) (3 dim / pixel), and 
-- The GSB rotated 45 degrees in all 3 axes to avoid points having the 0 value.
+- The GSB rotated 45 degrees in all 3 axes to avoid points having any 0 valued coordinate.
 
 The input grid features were re-engineered using the rotated-GSB representation, with 0 being the mask. The representation maximizes the vector distance separation between points representing the task colors. 
 
@@ -48,7 +48,7 @@ The input embeddings takes the 3D coordinate vector for each pixel and outputs a
 
 ## Metrics
 
-Training loss is the difference between the target grid tensor vs the predicted tensor. A straight forward Mean Squared Error is used.
+Training loss is the difference between the target grid tensor vs the predicted grid tensor. A straight forward Mean Squared Error is used.
 
 Evaluation metric is binary accuracy whether the predicted sequence is equal to the ground truth sequence, pixel by pixel, in the same order. Pixel color values are recovered from the floating point outputs by mapping the points to the closest vertex in the GSB solid representing a color.
 
@@ -58,13 +58,13 @@ Tested various hyperparamters such as learning rate, drop out, choice of RelU vs
 
 Experiment 1: Partially tagged and analyzed the distribution of the training data. Explored the initial model with an “Identity” task, which just copies the Input to the Output. A test to see if the model can indeed correctly learn the association between each input and output grid pixel.
 
-Experiment 2: Explore a few hyperparameters varying #epochs and lr and observing loss. Uses Identity tasks.
+Experiment 2: Explore a few hyperparameters varying #epochs and lr and observing loss. Used Identity tasks.
 
-Experiment 3: Test Dynamic Learning Rate. Uses Identity tasks.
+Experiment 3: Test Dynamic Learning Rate. Used Identity tasks.
 
 Experiment 3: Implemented Dynamic Learning Rate
 
-Experiment 4: Test with true ARC Tasks. 
+Experiment 4: Tested with true ARC Tasks. 
 - Analyzed vanishing gradient problem.
 - Applied He normal initialization, ReLU / PReLU activation at Dense output layer.
 - Explored hyperparamter Dropout between 0.1 and 0.5, embedding dimensions.
@@ -72,13 +72,17 @@ Experiment 4: Test with true ARC Tasks.
 	- Test  Count: 835,  Avg loss: 0.0130, Accuracy: 0 (0.0000),   Stops found: 817
 	- Train Count: 5100, Avg loss: 0.0016, Accuracy: 585 (0.1147), Stops found: 5067
 
-Experiment 5: Create new dataset with a single & simple task with only one rule
+Experiment 5: Created new dataset with a single & simple task with only one rule.
 - Circle a pixel. Result:
 	- Test  Count: 1045, Avg loss: 0.0751, Accuracy: 0 (0.0000), Stops found: 269
 	- Train Count: 8775, Avg loss: 0.0760, Accuracy: 0 (0.0000), Stops found: 2360
 - Move a pixel to the right. Results:
 	- Test  Count: 1051, Avg loss: 0.0153, Accuracy: 0 (0.0000), Stops found: 640
 	- Train Count: 8745, Avg loss: 0.0116, Accuracy: 30 (0.0034), Stops found: 5903
+
+## Results
+
+The current model is able to memorize some training data, but otherwise does not generalize to test data. There is evidence that the QR code stop token to mark the end of an output sequence is respected even when the output is wrong. There are some sample successes and failures in the [sample_results](../sample_results) directory. For example, a success:
 
 # Phase 2 - Deconstruct and Reconstruct - WIP
 
