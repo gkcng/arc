@@ -5,3 +5,5 @@ data/abstraction-and-reasoning-challenge
 archive/summarizer.ipynb
 archive/base-exp1-diff.html
 archive/base-exp51-diff.html
+__pycache__/
+checkpoints/
