@@ -27,7 +27,8 @@ d_model = 32
 dff = 128
 num_heads = 1 
 dropout = 0.1
-lr = CustomSchedule (4K Warmup Steps)
+lr = CustomSchedule
+(4K Warmup Steps)
 </pre>
 	</td>
 	<td colspan=4>Epoch: 300 - 0.16 secs - loss: 0.0022</td>
@@ -71,7 +72,8 @@ d_model = 32
 dff = 128
 num_heads = 1 
 dropout = 0.1
-lr = CustomSchedule (4K Warmup Steps)
+lr = CustomSchedule
+(4K Warmup Steps)
 </pre>		
 	</td><td colspan=4>
 Epoch: 300 - 0.44 secs - loss: 0.0003 (reached around 220-240)
@@ -108,7 +110,7 @@ Count: 51, Avg loss: 0.0639, Accuracy: 0 (0.0000), Stops found: 51</code>
 		<td>6.3</td>
 		<td>2024-03-08</td>
 		<td>5x5 Fixed Grid - Move A Pixel To the Right - Full Color Spectrum</td>
-		<td>120</td>
+		<td>1000</td>
 		<td>4728</td>
 		<td>1052</td>
 	</tr>
@@ -124,7 +126,8 @@ d_model = 64
 dff = 256
 num_heads = 1 
 dropout = 0.1
-lr = CustomSchedule (15K Warmup Steps)
+lr = CustomSchedule
+(15K Warmup Steps)
 </pre>		
 	</td><td colspan=4>
 Epoch 120 - 15s 25ms/step - loss: 0.0036 - lr: 4.7036e-04 - val_loss: 0.0029
@@ -132,11 +135,17 @@ Epoch 120 - 15s 25ms/step - loss: 0.0036 - lr: 4.7036e-04 - val_loss: 0.0029
 	</tr>
 	<tr><th colspan=4>Results</th></tr>
 	<tr><td colspan=4>
-<code>
+<code>Run 1:
 TrainSet: 
 <b>Count: 4728, Avg loss: 0.0007, Accuracy: 4208 (0.8900), Stops found: 4728</b>
 TestSet: 
 Count: 1052, Avg loss: 0.0019, Accuracy: 557 (0.5295), Stops found: 1052
+
+Run 2: Without CNN/MaxPool in Embedding Layer
+TrainSet: 
+Count: 4728, Avg loss: 0.0007, Accuracy: 4205 (0.8894), Stops found: 4728
+TestSet:
+Count: 1052, Avg loss: 0.0019, Accuracy: 570 (0.5418), Stops found: 1052
 </code>
 </td></tr>	
 </table>
