@@ -47,7 +47,9 @@ A sketch of how the Transformer architecture is currently applied in this experi
 
 ## Current Results
 
-This is in its early stage. See [experiments](experiments/JOURNEY.md) for a write up on the journey so far. With just a hastily adopted transformer, the current model is able to memorize some training data, but otherwise does not generalize to test data. There is evidence that the QR code stop token to mark the end of an output sequence is respected even when the output is wrong. There are some sample successes and failures in the [sample_results](sample_results) directory. For example, a success:
+This is in its early stage. See [experiments](experiments/JOURNEY.md) for a write up on the journey so far. With just a hastily adopted transformer, and a single trivially simple test task in a 5x5 grid, it has produced 90% accuracy on the training data and 55% on the test data.
+
+For the ARC tasks, the current model is able to memorize some training data, but otherwise does not generalize to test data, this is most likely that the size of the training dataset is inadequate. There are some sample successes and failures in the [sample_results](sample_results) directory. For example, a success:
 
 <div align="center">
    <img src="sample_results/arc_tasks/succeeded/d931c21c_train_2|d931c21c_train_3.png"  height="480px"/>   
