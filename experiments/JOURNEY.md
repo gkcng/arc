@@ -106,6 +106,19 @@ With limited resources, one possible path to make progress is to reduce the comp
 
 Reducing complexity of the problem affords better guardrails for experimentation, and opportunity to understand how the model architecture addresses the challenges. 
 
+Currently the following process is adopted. Starting with a minimal model:
+1.	Add an incrementally simple task, or an increased difficulty like grid size, variable grid size… etc.
+1.	Get smallest model that generalizes to the test set with some accuracy.
+1.	Test largest batch size with appropriate LR that maintains accuracy
+1.	Test LR schedules and maximum epoch to improve accuracy before overfit
+1.	Note best accuracy -> determine if model complexity should be increased, if not go to 7.
+1.	If so, try variety of methods: Embedding Layers, d_model /dff, Encoding/ Decoding Layer, additional architectural components, back to 2.
+1.	Look at the Kaggle data set, winners’ write up to pick tasks that are likely in the private test set. Pick one.
+1.	Repeat 1-6 with a simplified version, 
+1.	Repeat 1-6 with a realistic version, 
+1.	Test with ARC Train and Eval Set, 
+1.	Test with Kaggle private test.
+
 # Relevant Literature
 
 A continuation of the ARC challenge. Lab42, 2023. https://lab42.global/arc/
