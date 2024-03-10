@@ -149,3 +149,98 @@ Count: 1052, Avg loss: 0.0019, Accuracy: 570 (0.5418), Stops found: 1052
 </code>
 </td></tr>	
 </table>
+
+<table>
+	<tr>
+		<th>No.</th> 
+		<th>Date</th> 
+		<th>Task</th>
+		<th>TaskSet Size</th>
+		<th>Training Rows</th>
+		<th>Test Rows</th>
+	</tr>
+	<tr>
+		<td>6.4</td>
+		<td>2024-03-09</td>
+		<td>As 6.3 with batch size 32, same epochs</td>
+		<td>1000</td>
+		<td>4728</td>
+		<td>1052</td>
+	</tr>
+	<tr>
+		<th colspan=2>HyperParams</th>
+		<th colspan=4>Epochs/Loss</th>
+	</tr>
+	<tr><td colspan=2 rowspan=3>
+<pre>
+batch size = 32
+num_layers = 1
+d_model = 64 
+dff = 256
+num_heads = 1 
+dropout = 0.1
+lr = CustomSchedule
+(4K Warmup Steps)
+</pre>		
+	</td><td colspan=4>
+Epoch 120 - 5s 32ms/step - loss: 0.0036 - lr: 9.3994e-04 - val_loss: 0.0039
+</td>
+	</tr>
+	<tr><th colspan=4>Results</th></tr>
+	<tr><td colspan=4>
+<code>Run 1:
+TrainSet: 
+Count: 4728, Avg loss: 0.0011, Accuracy: 3617 (0.7650), Stops found: 4728
+TestSet: 
+Count: 1052, Avg loss: 0.0026, Accuracy: 396 (0.3764), Stops found: 1052
+</code>
+</td></tr>	
+</table>
+
+<table>
+	<tr>
+		<th>No.</th> 
+		<th>Date</th> 
+		<th>Task</th>
+		<th>TaskSet Size</th>
+		<th>Training Rows</th>
+		<th>Test Rows</th>
+	</tr>
+	<tr>
+		<td>6.5</td>
+		<td>2024-03-09</td>
+		<td>As 6.3 with batch size 16, 180 epochs</td>
+		<td>1000</td>
+		<td>4728</td>
+		<td>1052</td>
+	</tr>
+	<tr>
+		<th colspan=2>HyperParams</th>
+		<th colspan=4>Epochs/Loss</th>
+	</tr>
+	<tr><td colspan=2 rowspan=3>
+<pre>
+batch size = 16
+num_layers = 1
+d_model = 64 
+dff = 256
+num_heads = 1 
+dropout = 0.1
+lr = CustomSchedule
+(8K Warmup Steps)
+</pre>		
+	</td><td colspan=4>
+Epoch 180 - 8s 27ms/step - loss: 0.0025 - lr: 5.4229e-04 - val_loss: 0.0044
+Observed beginning of overfit at Epoch ~165
+</td>
+	</tr>
+	<tr><th colspan=4>Results</th></tr>
+	<tr><td colspan=4>
+<code>Run 1:
+TrainSet: 
+Count: 4728, Avg loss: 0.0007, Accuracy: 4290 (0.9074), Stops found: 4728
+TestSet: 
+Count: 1052, Avg loss: 0.0029, Accuracy: 579 (0.5504), Stops found: 1052
+</code>
+</td></tr>	
+</table>
