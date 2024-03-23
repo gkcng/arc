@@ -230,17 +230,136 @@ lr = CustomSchedule
 (8K Warmup Steps)
 </pre>		
 	</td><td colspan=4>
+<div>
+Run 2: <br/>
+Epoch 120 - 6s 21ms/step - loss: 0.0029 - lr: 6.6464e-04 - val_loss: 0.0032<br/>
+Epoch 180 - 6s 21ms/step - loss: 0.0023 - lr: 5.4229e-04 - val_loss: 0.0026<br/>
+</div>
+<div>
+Run 1:<br/>
 Epoch 180 - 8s 27ms/step - loss: 0.0025 - lr: 5.4229e-04 - val_loss: 0.0044
 Observed beginning of overfit at Epoch ~165
+</div>
 </td>
 	</tr>
 	<tr><th colspan=4>Results</th></tr>
-	<tr><td colspan=4>
-<code>Run 1:
+	<tr><td colspan=4><code>Run 2
+TrainSet:
+120 - Count: 4728, Avg loss: 0.0013, Accuracy: 4090 (0.8651), Stops found: 4728
+180 - Count: 4728, Avg loss: 0.0009, Accuracy: 4441 (0.9393), Stops found: 4728
+TestSet: 
+120 - Count: 1052, Avg loss: 0.0032, Accuracy: 483 (0.4591), Stops found: 1052
+180 - Count: 1052, Avg loss: 0.0026, Accuracy: 594 (0.5646), Stops found: 1052
+Run 1- 180:
 TrainSet: 
 Count: 4728, Avg loss: 0.0007, Accuracy: 4290 (0.9074), Stops found: 4728
 TestSet: 
 Count: 1052, Avg loss: 0.0029, Accuracy: 579 (0.5504), Stops found: 1052
+</code>
+</td></tr>	
+</table>
+
+<table>
+	<tr>
+		<th>No.</th> 
+		<th>Date</th> 
+		<th>Task</th>
+		<th>TaskSet Size</th>
+		<th>Training Rows</th>
+		<th>Test Rows</th>
+	</tr>
+	<tr>
+		<td>6.6</td>
+		<td>2024-03-15</td>
+		<td>5x5 Fixed Grid - Move A Pixel - Full Color Spectrum - Up,down,left,right</td>
+		<td>1000*4</td>
+		<td>19196</td>
+		<td>4190</td>
+	</tr>
+	<tr>
+		<th colspan=2>HyperParams</th>
+		<th colspan=4>Epochs/Loss</th>
+	</tr>
+	<tr><td colspan=2 rowspan=3>
+<pre>
+batch size = 16
+num_layers = 1
+d_model = 128
+dff = 512
+num_heads = 1 
+dropout = 0.1
+lr = CustomSchedule
+(8K Warmup Steps)
+</pre>		
+	</td><td colspan=4>
+<div>
+Epoch 60 - 29s 24ms/step - loss: 0.0062 - lr: 3.3079e-04 - val_loss: 0.0115<br/>
+</div>
+<div>
+</div>
+</td>
+	</tr>
+	<tr><th colspan=4>Results</th></tr>
+	<tr><td colspan=4><code>
+TrainSet:
+Count: 19196, Avg loss: 0.0047, Accuracy: 7562 (0.3939), Stops found: 19196
+TestSet: 
+Count: 4190, Avg loss: 0.0115, Accuracy: 112 (0.0267), Stops found: 4190
+</code>
+</td></tr>	
+</table>
+
+
+<table>
+	<tr>
+		<th>No.</th> 
+		<th>Date</th> 
+		<th>Task</th>
+		<th>TaskSet Size</th>
+		<th>Training Rows</th>
+		<th>Test Rows</th>
+	</tr>
+	<tr>
+		<td>6.7</td>
+		<td>2024-03-21</td>
+		<td>5x5 Fixed Grid - Move A Pixel To the Right - Full Color Spectrum</td>
+		<td>1000</td>
+		<td>4728</td>
+		<td>1052</td>
+	</tr>
+	<tr>
+		<th colspan=2>HyperParams</th>
+		<th colspan=4>Epochs/Loss</th>
+	</tr>
+	<tr><td colspan=2 rowspan=3>
+<pre>
+batch size = 16
+num_layers = 1
+d_model = 72
+dff = 512
+num_heads = 1 
+dropout = 0.1
+lr = CustomSchedule
+(8K Warmup Steps)
+CNN Filters = 1
+</pre>		
+	</td><td colspan=4>
+<div>
+Epoch 180 - 6s 21ms/step - loss: 0.0020 - lr: 5.1128e-04 - val_loss: 0.0015<br/>
+Epoch 240 - 7s 22ms/step - loss: 0.0015 - lr: 4.4263e-04 - val_loss: 0.0013<br/>
+</div>
+<div>
+</div>
+</td>
+	</tr>
+	<tr><th colspan=4>Results</th></tr>
+	<tr><td colspan=4><code>
+TrainSet:
+180 - Count: 4728, Avg loss: 0.0004, Accuracy: 4721 (0.9985), Stops found: 4728
+240 - Count: 4728, Avg loss: 0.0003, Accuracy: 4724 (0.9992), Stops found: 4728
+TestSet: 
+180 - Count: 1052, Avg loss: 0.0015, Accuracy: 839 (0.7975), Stops found: 1052
+240 - Count: 1052, Avg loss: 0.0013, Accuracy: 857 (0.8146), Stops found: 1052
 </code>
 </td></tr>	
 </table>
